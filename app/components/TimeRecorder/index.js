@@ -22,7 +22,11 @@ class TimeRecorder extends Component {
   }
 
   timeFormat() {
-    return Date.now()
+    const d = new Date()
+    const ds = d.toLocaleDateString("ja-JP")
+    const h = d.getHours()
+    const m = d.getMinutes()
+    return ds + " " + h + ":" + m 
   }
 
   render() {
