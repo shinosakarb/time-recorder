@@ -9,7 +9,7 @@ const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>Time Recorder</div>
+    <App />
   </Provider>,
   document.getElementById('root')
 )

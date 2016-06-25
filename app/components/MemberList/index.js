@@ -3,7 +3,7 @@ import Member from '../../components/Member'
 
 class MemberList extends Component {
   render() {
-    const memberNodes = this.props.data.map((member) => {
+    const memberNodes = this.props.data.members.map((member) => {
       return (
         <Member author={member.author} key={member.id}>
           {member.text}
