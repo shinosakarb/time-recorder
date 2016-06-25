@@ -21,10 +21,15 @@ class TimeRecorder extends Component {
     this.loadMembersFromServer()
   }
 
+  timeFormat() {
+    return Date.now()
+  }
+
   render() {
     return (
       <div className={style.normal}>
         <h1>Time Recorder</h1>
+        {this.timeFormat()}
         <MemberList data={this.props.data} />
         <RecorderForm onRecorderSubmit={this.handleRecorderSubmit.bind(this)} />
       </div>
