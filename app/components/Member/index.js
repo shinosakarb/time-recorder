@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Remarkable from 'remarkable'
+import style from './style'
 
 class Member extends Component {
   rawMarkup() {
@@ -10,7 +11,7 @@ class Member extends Component {
 
   render() {
     return (
-      <div className="member">
+      <div className={style.member}>
         <span className="memberName">
           {this.props.name}
         </span>
