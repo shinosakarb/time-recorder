@@ -11,10 +11,15 @@ class Member extends Component {
   render() {
     return (
       <div className="member">
-        <h2 className="memberAuthor">
-          {this.props.author}
+        <h2 className="memberName">
+          {this.props.name}
         </h2>
-        <span dangerouslySetInnerHTML={this.rawMarkup()} />
+        <h2 className="memberCheckinTime">
+          {this.props.checkin_time}
+        </h2>
+        <h2 className="memberCheckoutTime">
+          {this.props.checkout_time}
+        </h2>
       </div>
     )
   }
