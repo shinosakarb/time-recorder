@@ -5,8 +5,9 @@ class MemberList extends Component {
   render() {
     const memberNodes = this.props.data.members.map((member) => {
       return (
-        <Member author={member.author} key={member.id}>
-          {member.text}
+        <Member name={member.name} key={member.id}>
+          {member.checkin_time}
+          {member.checkout_time}
         </Member>
       )
     })
