@@ -16,7 +16,10 @@ const reducerMap = {
     return state.concat([action.payload])
   },
   up_work(state, action) {
-    return Object.assign({}, state, { at_work: !state.at_work })
+    return {
+      ...state,
+      at_work: !state.at_work
+    }
   }
 }
 
