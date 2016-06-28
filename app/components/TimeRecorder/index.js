@@ -10,7 +10,7 @@ class TimeRecorder extends Component {
   }
 
   loadMembersFromServer() {
-    this.props.actions.showMembers(data)
+//    this.props.actions.showMembers(data)
   }
 
   handleRecorderSubmit(time) {
@@ -35,7 +35,11 @@ class TimeRecorder extends Component {
         <h1>Time Recorder</h1>
         {this.timeFormat()}
         <MemberList data={this.props.data} />
-        <RecorderForm onRecorderSubmit={this.handleRecorderSubmit.bind(this)} />
+        <RecorderForm
+          onRecorderSubmit={this.handleRecorderSubmit.bind(this)}
+          actions={this.props.actions}
+          data={this.props.data}
+        />
       </div>
     )
   }
