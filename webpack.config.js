@@ -2,10 +2,16 @@ var webpack = require('webpack')
 var postcssImport = require('postcss-import');
 var autoprefixer = require('autoprefixer')
 var precss = require('precss')
+var path = require('path')
 
 module.exports = {
-  entry: './app/index',
+  context: path.join(__dirname, './app'),
+  entry: {
+    js: './index.js',
+    html: './index.html'
+  },
   output: {
+    path: path.join(__dirname, './public'),
     filename: 'bundle.js'
   },
   plugins: [
@@ -13,6 +19,10 @@ module.exports = {
   ],
   module: {
     loaders: [
+      {
+        test: /\.html$/,
+        loader: 'file?name=[name].[ext]'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -45,6 +55,7 @@ module.exports = {
     extensions: ['', '.js', '.css']
   },
   devServer: {
+    contentBase: './app',
     hot: true,
     port: 4000,
     inline: true,
