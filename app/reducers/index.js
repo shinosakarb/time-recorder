@@ -7,6 +7,24 @@ const initialState = {
   ]
 }
 
+const memberRecuer = {
+  up_work(state, action) {
+    if (state.id !== action.payload) {
+      return state
+    }
+
+    let today = new Date()
+    let now   = `${today.getFullYear()}/${('0' + (today.getMonth() + 1)).slice(-2)}/${('0' + today.getDate()).slice(-2)} ${('0' + today.getHours()).slice(-2)}:${('0' + today.getMinutes()).slice(-2)}`
+
+    return {
+      ...state,
+      checkin_time:   (!state.at_work ? now : state.checkin_time),
+      checkout_time:  (!state.at_work ? ""  : now),
+      at_work:        !state.at_work
+    }
+  }
+}
+
 const reducerMap = {
   show_members(state, action) {
     return action.members.payload
@@ -15,16 +33,9 @@ const reducerMap = {
     return state.concat([action.payload])
   },
   up_work(state, action) {
-    let target_member = state.members.find((element, index, array) => {return element.id === action.payload})
-    let today = new Date()
-    let now   = `${today.getFullYear()}/${('0' + (today.getMonth() + 1)).slice(-2)}/${('0' + today.getDate()).slice(-2)} ${('0' + today.getHours()).slice(-2)}:${('0' + today.getMinutes()).slice(-2)}`
-    target_member.checkin_time  = (!target_member.at_work ? now : target_member.checkin_time)
-    target_member.checkout_time = (!target_member.at_work ? ""  : now)
-    target_member.at_work       = !target_member.at_work
-
     return {
       ...state,
-      members: state.members.map((element) => {return (element.id === target_member.id ? target_member : element)})
+      members: state.members.map(t => memberRecuer.up_work(t, action))
     }
   }
 }
