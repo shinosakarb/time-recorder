@@ -25,10 +25,6 @@ class RecorderForm extends Component {
     this.setState({author: '', text: ''})
   }
 
-  handleUpWork(e) {
-    this.props.actions.up_work()
-  }
-
   render() {
     return (
       <form className="recorderForm" onSubmit={this.handleSubmit.bind(this)}>
@@ -45,7 +41,6 @@ class RecorderForm extends Component {
           onChange={this.handleTextChange.bind(this)}
         />
         <input type="submit" value="Post" />
-        <input type="button" value={`${this.props.data.at_work ? '退勤' : '出勤'}`} onClick={this.handleUpWork.bind(this)} />
       </form>
     )
   }

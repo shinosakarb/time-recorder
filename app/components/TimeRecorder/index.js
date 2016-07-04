@@ -34,7 +34,7 @@ class TimeRecorder extends Component {
       <div className={style.normal}>
         <h1>Time Recorder</h1>
         {this.timeFormat()}
-        <MemberList data={this.props.data} />
+        <MemberList data={this.props.data} actions={this.props.actions} />
         <RecorderForm
           onRecorderSubmit={this.handleRecorderSubmit.bind(this)}
           actions={this.props.actions}

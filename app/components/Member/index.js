@@ -9,6 +9,10 @@ class Member extends Component {
     return { __html: rawMarkup }
   }
 
+  handleUpWork(e) {
+    this.props.actions.up_work(this.props.id)
+  }
+
   render() {
     return (
       <div className={style.member}>
@@ -21,6 +25,7 @@ class Member extends Component {
         <span className="memberCheckoutTime">
           {this.props.checkout_time}
         </span>
+        <input type="button" value={`${this.props.at_work ? '退勤' : '出勤'}`} onClick={this.handleUpWork.bind(this)} />
       </div>
     )
   }
